@@ -46,10 +46,9 @@ None
         - address=/mythtvbox.example.com/192.168.0.120
 ```
 
-
 #### License
 
-BSD
+MIT
 
 #### Author Information
 

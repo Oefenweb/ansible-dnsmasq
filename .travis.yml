@@ -7,10 +7,13 @@ python: "2.7"
 
 env:
   - ANSIBLE_VERSION=latest
+  - ANSIBLE_VERSION=2.0.2.0
   - ANSIBLE_VERSION=2.0.1.0
   - ANSIBLE_VERSION=2.0.0.2
   - ANSIBLE_VERSION=2.0.0.1
   - ANSIBLE_VERSION=2.0.0.0
+  - ANSIBLE_VERSION=1.9.6
+  - ANSIBLE_VERSION=1.9.5
   - ANSIBLE_VERSION=1.9.4
   - ANSIBLE_VERSION=1.9.3
   - ANSIBLE_VERSION=1.9.2
@@ -43,6 +46,12 @@ branches:
 before_install:
   - sudo apt-get update -qq
 
+  # Remove dnsmasq
+  - sudo apt-get remove --purge --yes dnsmasq
+
+  # Install dnsutils (for nslookup)
+  - sudo apt-get install --yes dnsutils
+
 install:
   # Install Ansible.
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install --no-binary ansible ansible; else pip install --no-binary ansible ansible==$ANSIBLE_VERSION; fi
@@ -61,5 +70,18 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
+  # Test (local) resolve
+  - >
+    nslookup mail.example.com
+    | grep 'Address'
+    | awk '{print $2}'
+    | grep -q '192.168.0.8'
+    && (echo 'Configuration test: pass' && exit 0)
+    || (echo 'Configuration test: fail' && exit 1)
+
 notifications:
   email: false
+  hipchat:
+    rooms:
+      secure: vQmfUs40AjBvzmuR8qamwiHveStdAaiirpxm345XZYK99vPLRTYYOlVOGM4aA4UJ/rLjAE64OhDTwZezmENMTvlE+ZVyHgNJTZS91B3lxoEwfqnyxoYPvUQ19J5kWHHCf7fzBgXs5sIUXJibFEuodXx5LYdCI2DFoJ5gyhOppf/HDd9G/162LQG8s8K5RYl6WWVFLZNtdBG9xv60gYUuqNXTV6/zfPUJZG72brVn6/oU8nmvFUFzE1AyEUUXoPzXoyL58GLEsNVU46k0cE12dETznDwvO+CVxJXxukWBgrZIs61kfLCA5JtIwJOS3n5JN/bgaJJfqXn06QA8AKk0x5yOuYEm3v0qhCbzJZqmKA7VVIBv9KGB9Cjmy6K47vD0TRZL04Rx6+R+XxW3e1RbYfK6nIp5e06QgaqoMiRQVSaZQ8Ba2VBInbTG/8/9RQxOTnE7tfu3u/0mxcWLCDnWuVFl2E29XPiytYXIGhMYu4MbhWAlqw5UpA5DCy6fxBk9Pqwownxl79N6PlWx9CwSdLpYO0wxsGapugCKWGD+KrT9jDEoxzML7+1CMh9SUdnrPQi+jsWQVom8q8bGNf2uU3T+XbkUo4Y68D9cbrEiyNaC64g4hf22EGCeitvX8ZhAVUvIKu7vSaFsDJ9d8XPcGYWXcHX3fNqNmjOh7cg/HW4=
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

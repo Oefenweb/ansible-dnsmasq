@@ -6,8 +6,6 @@
   roles:
     - ../../
   vars:
-    dnsmasq_port: 53
-
     dnsmasq_dnsmasqd_present:
       example-com:
         - address=/mail.example.com/192.168.0.8

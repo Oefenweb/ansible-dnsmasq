@@ -40,9 +40,8 @@ None
   roles:
     - dnsmasq
   vars:
-    dnsmasq_port: 5353
     dnsmasq_dnsmasqd_present:
-      hosts:
+      example-com:
         - address=/mail.example.com/192.168.0.8
         - address=/www.example.com/192.168.0.9
 ```

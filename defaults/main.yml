@@ -1,0 +1,5 @@
+# defaults file for dnsmasq
+---
+dnsmasq_dnsmasqd_present: {}
+
+dnsmasq_dnsmasqd_absent: {}

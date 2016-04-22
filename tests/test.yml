@@ -1,0 +1,14 @@
+# test file for dnsmasq
+---
+- hosts: localhost
+  connection: local
+  sudo: true
+  roles:
+    - ../../
+  vars:
+    dnsmasq_dnsmasqd_present:
+      example-com:
+        - address=/mail.example.com/192.168.0.8
+        - address=/www.example.com/192.168.0.9
+
+    dnsmasq_dnsmasqd_absent: {}

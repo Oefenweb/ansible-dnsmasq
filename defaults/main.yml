@@ -1,5 +1,9 @@
 # defaults file for dnsmasq
 ---
+dnsmasq_running: 'started'
+
+dnsmasq_enabled: 'yes'
+
 dnsmasq_dnsmasqd_present: {}
 
 dnsmasq_dnsmasqd_absent: {}

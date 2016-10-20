@@ -55,7 +55,6 @@
     - dnsmasq-configuration
     - dnsmasq-configuration-remove-specific-configuration-files
 
-
 - name: make sure Dnsmasq is running
   service:
     name: dnsmasq

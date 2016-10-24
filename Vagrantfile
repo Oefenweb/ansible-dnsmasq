@@ -21,6 +21,14 @@ boxes = [
     :ram => "256"
   },
   {
+    :name => "ubuntu-1604",
+    :box => "opscode-ubuntu-16.04",
+    :url => "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-16.04_chef-provisionerless.box",
+    :ip => '10.0.0.13',
+    :cpu => "50",
+    :ram => "256"
+  },
+  {
     :name => "debian-711",
     :box => "opscode-debian-7.11",
     :url => "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.11_chef-provisionerless.box",

@@ -45,7 +45,7 @@
 
 - name: remove specific configuration files
   file:
-    path: "/etc/dnsmasq.d/{{ item.key }}" 
+    path: "/etc/dnsmasq.d/{{ item.key }}"
     state: absent
   with_dict: "{{ dnsmasq_dnsmasqd_absent }}"
   notify: restart dnsmasq
@@ -54,3 +54,13 @@
     - dnsmasq
     - dnsmasq-configuration
     - dnsmasq-configuration-remove-specific-configuration-files
+
+- name: start and enable service
+  service:
+    name: dnsmasq
+    state: "{{ dnsmasq_service_state }}"
+    enabled: "{{ dnsmasq_service_enabled | bool }}"
+  tags:
+    - configuration
+    - dnsmasq
+    - dnsmasq-start-enable-service

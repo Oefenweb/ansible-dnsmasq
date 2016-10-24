@@ -10,14 +10,17 @@ None
 
 #### Variables
 
- * `dnsmasq_port`: [optional]: Listen on this specific port instead of the standard DNS port (53).
+* `dnsmasq_service_state`: [default: `started`]: The state of th service (e.g. `stopped`)
+* `dnsmasq_service_enabled`: [default: `true`]: Whether the service should start on boot
 
- * `dnsmasq_dnsmasqd_present`: [default: `{}`]: Declaration of specific configuration files
- * `dnsmasq_dnsmasqd_present.key`: [required]: The name of the configuration file (e.g. `hosts`)
- * `dnsmasq_dnsmasqd_present.key.{n}`: [default: `[]`]: List of lines of the configuration file
+* `dnsmasq_port`: [optional]: Listen on this specific port instead of the standard DNS port (53).
+
+* `dnsmasq_dnsmasqd_present`: [default: `{}`]: Declaration of specific configuration files
+* `dnsmasq_dnsmasqd_present.key`: [required]: The name of the configuration file (e.g. `hosts`)
+* `dnsmasq_dnsmasqd_present.key.{n}`: [default: `[]`]: List of lines of the configuration file
   
- * `dnsmasq_dnsmasqd_absent`: [default: `{}`]: Specific configuration files to remove
- * `dnsmasq_dnsmasqd_absent.key`: [required]: The name of the configuration file (e.g. `hosts`)
+* `dnsmasq_dnsmasqd_absent`: [default: `{}`]: Specific configuration files to remove
+* `dnsmasq_dnsmasqd_absent.key`: [required]: The name of the configuration file (e.g. `hosts`)
 
 ## Dependencies
 

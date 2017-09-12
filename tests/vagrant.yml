@@ -3,5 +3,33 @@
 - hosts: all
   remote_user: vagrant
   become: true
+  pre_tasks:
+    - name: create resolv-file for dnsmasq
+      copy:
+        content: |
+          nameserver 8.8.8.8
+          nameserver 8.8.4.4
+          nameserver 208.67.222.222
+          nameserver 208.67.220.220
+        dest: /etc/resolv.dnsmasq
   roles:
     - ../../
+  vars:
+    dnsmasq_dnsmasq_conf:
+      - |
+        port=53
+        listen-address={{ ansible_lo['ipv4']['address'] }}
+        bind-interfaces
+    dnsmasq_dnsmasq_d_files_present:
+      cache:
+        - |
+          domain-needed
+          bogus-priv
+          no-hosts
+          dns-forward-max=150
+          cache-size=1000
+          neg-ttl=3600
+          resolv-file=/etc/resolv.dnsmasq
+          no-poll
+
+          log-queries

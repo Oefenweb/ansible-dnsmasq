@@ -3,9 +3,17 @@
 - hosts: all
   remote_user: vagrant
   become: true
+  pre_tasks:
+    - name: create resolv-file for dnsmasq
+      copy:
+        content: |
+          nameserver 8.8.8.8
+          nameserver 8.8.4.4
+        dest: /etc/resolv.dnsmasq
   roles:
     - ../../
   vars:
+    dnsmasq_etc_default_ignore_resolvconf: true
     dnsmasq_dnsmasq_conf:
       - |
         port=53
@@ -17,14 +25,8 @@
           domain-needed
           bogus-priv
           no-hosts
-          no-resolv
           dns-forward-max=150
           cache-size=1000
           neg-ttl=3600
-
-          server=8.8.8.8
-          server=8.8.4.4
-          server=208.67.222.222
-          server=208.67.220.220
-
-          log-queries
+          resolv-file=/etc/resolv.dnsmasq
+          no-poll

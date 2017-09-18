@@ -13,14 +13,20 @@
     - dnsmasq-install
     - dnsmasq-install-dependencies
 
-- name: update configuration file
+- name: update configuration file(s)
   template:
-    src: etc/dnsmasq.conf.j2
-    dest: /etc/dnsmasq.conf
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     owner: root
     group: root
     mode: 0644
-    validate: 'dnsmasq --test -C %s'
+    validate: "{{ item.validate | default(omit) }}"
+  with_items:
+    - src: etc/default/dnsmasq.j2
+      dest: /etc/default/dnsmasq
+    - src: etc/dnsmasq.conf.j2
+      dest: /etc/dnsmasq.conf
+      validate: 'dnsmasq --test -C %s'
   notify: restart dnsmasq
   tags:
     - configuration

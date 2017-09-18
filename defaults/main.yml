@@ -3,6 +3,8 @@
 dnsmasq_service_state: started
 dnsmasq_service_enabled: true
 
+dnsmasq_etc_default_config_dir: '/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new'
+
 dnsmasq_dnsmasq_conf: []
 dnsmasq_dnsmasq_d_files_present: {}
 dnsmasq_dnsmasq_d_files_absent: {}

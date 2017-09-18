@@ -14,6 +14,11 @@ None
 * `dnsmasq_service_state`: [default: `started`]: The state of th service (e.g. `stopped`)
 * `dnsmasq_service_enabled`: [default: `true`]: Whether the service should start on boot
 
+* `dnsmasq_etc_default_domain_suffix`: [optional]: Specifies the domain which hosts read from the DHCP leases file must have to be legal (e.g. `dnsdomainname`)
+* `dnsmasq_etc_default_dnsmasq_opts`: [optional]: Options to pass to the `dnsmasq` daemon (e.g. `--conf-file=/etc/dnsmasq.alt`)
+* `dnsmasq_etc_default_config_dir`: [default: `/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new`]: Searches this drop directory for configuration options (leave empty to comment out)
+* `dnsmasq_etc_default_ignore_resolvconf`: [optional]: If the `resolvconf` package is installed, `dnsmasq` will use its output rather than the contents of `/etc/resolv.conf` to find upstream nameservers (e.g. `true`)
+
 * `dnsmasq_dnsmasq_conf`: [default: `[]`]: List of lines to be added to `/etc/dnsmasq.conf`
 
 * `dnsmasq_dnsmasq_d_files_present`: [default: `{}`]: Declaration of specific configuration files (to add)

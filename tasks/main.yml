@@ -13,14 +13,20 @@
     - dnsmasq-install
     - dnsmasq-install-dependencies
 
-- name: update configuration file
+- name: update configuration file(s)
   template:
-    src: etc/dnsmasq.conf.j2
-    dest: /etc/dnsmasq.conf
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
     owner: root
     group: root
     mode: 0644
-    validate: 'dnsmasq --test -C %s'
+    validate: "{{ item.validate | default(omit) }}"
+  with_items:
+    - src: etc/default/dnsmasq.j2
+      dest: /etc/default/dnsmasq
+    - src: etc/dnsmasq.conf.j2
+      dest: /etc/dnsmasq.conf
+      validate: 'dnsmasq --test -C %s'
   notify: restart dnsmasq
   tags:
     - configuration
@@ -29,13 +35,13 @@
 
 - name: add specific configuration files
   template:
-    src: "etc/dnsmasq.d/config.j2"
+    src: etc/dnsmasq.d/config.j2
     dest: "/etc/dnsmasq.d/{{ item.key }}"
     owner: root
     group: root
     mode: 0644
     validate: 'dnsmasq --test -C %s'
-  with_dict: "{{ dnsmasq_dnsmasqd_present }}"
+  with_dict: "{{ dnsmasq_dnsmasq_d_files_present }}"
   notify: restart dnsmasq
   tags:
     - configuration
@@ -47,7 +53,7 @@
   file:
     path: "/etc/dnsmasq.d/{{ item.key }}"
     state: absent
-  with_dict: "{{ dnsmasq_dnsmasqd_absent }}"
+  with_dict: "{{ dnsmasq_dnsmasq_d_files_absent }}"
   notify: restart dnsmasq
   tags:
     - configuration

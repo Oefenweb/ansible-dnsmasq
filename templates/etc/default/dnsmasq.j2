@@ -53,3 +53,7 @@ IGNORE_RESOLVCONF={{ dnsmasq_etc_default_ignore_resolvconf | bool | ternary('yes
 {% else %}
 #IGNORE_RESOLVCONF=yes
 {% endif %}
+
+{% for line in dnsmasq_etc_default_options | default([]) %}
+{{ line }}
+{% endfor %}

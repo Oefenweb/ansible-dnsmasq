@@ -19,6 +19,8 @@ None
 * `dnsmasq_etc_default_config_dir`: [default: `/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new`]: Searches this drop directory for configuration options (leave empty to comment out)
 * `dnsmasq_etc_default_ignore_resolvconf`: [optional]: If the `resolvconf` package is installed, `dnsmasq` will use its output rather than the contents of `/etc/resolv.conf` to find upstream nameservers (e.g. `true`)
 
+* `dnsmasq_etc_default`: [see: `defaults/main.yml`]: List of lines to be added to `/etc/default/dnsmasq`
+
 * `dnsmasq_dnsmasq_conf`: [default: `[]`]: List of lines to be added to `/etc/dnsmasq.conf`
 
 * `dnsmasq_dnsmasq_d_files_present`: [default: `{}`]: Declaration of specific configuration files (to add)

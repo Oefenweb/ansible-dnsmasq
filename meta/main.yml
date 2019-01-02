@@ -1,6 +1,7 @@
 # meta file for dnsmasq
 ---
 galaxy_info:
+  role_name: dnsmasq
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Set up dnsmasq in Debian-like systems
@@ -12,6 +13,7 @@ galaxy_info:
         - precise
         - trusty
         - xenial
+        - bionic
     - name: Debian
       versions:
         - wheezy

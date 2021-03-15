@@ -1,4 +1,4 @@
-# handlers file for dnsmasq
+# handlers file
 ---
 - name: restart dnsmasq
   service:

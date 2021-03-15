@@ -1,6 +1,7 @@
-# meta file for dnsmasq
+# meta file
 ---
 galaxy_info:
+  namespace: oefenweb
   role_name: dnsmasq
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.

@@ -1,4 +1,4 @@
-# vars file for dnsmasq
+# vars file
 ---
 dnsmasq_dependencies:
   - dnsmasq

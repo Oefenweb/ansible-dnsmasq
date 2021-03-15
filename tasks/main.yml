@@ -1,4 +1,4 @@
-# tasks file for dnsmasq
+# tasks file
 ---
 - name: install dependencies
   apt:

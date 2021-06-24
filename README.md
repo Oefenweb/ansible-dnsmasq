@@ -1,7 +1,8 @@
 
 ## dnsmasq
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-dnsmasq.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-dnsmasq) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-dnsmasq-blue.svg)](https://galaxy.ansible.com/Oefenweb/dnsmasq/)
+[![CI](https://github.com/Oefenweb/ansible-dnsmasq/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-dnsmasq/actions?query=workflow%3ACI)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-dnsmasq-blue.svg)](https://galaxy.ansible.com/Oefenweb/dnsmasq/)
 
 Set up [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) in Debian-like systems.
 
@@ -26,7 +27,7 @@ None
 * `dnsmasq_dnsmasq_d_files_present`: [default: `{}`]: Declaration of specific configuration files (to add)
 * `dnsmasq_dnsmasq_d_files_present.key`: [required]: The name of the configuration file (e.g. `hosts`)
 * `dnsmasq_dnsmasq_d_files_present.key.{n}`: [default: `[]`]: List of lines of the configuration file
-  
+
 * `dnsmasq_dnsmasq_d_files_absent`: [default: `{}`]: Specific configuration files to remove
 * `dnsmasq_dnsmasq_d_files_absent.key`: [required]: The name of the configuration file (e.g. `hosts`)
 

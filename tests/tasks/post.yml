@@ -1,0 +1,23 @@
+# post test file
+---
+- name: install test dependencies
+  apt:
+    name:
+      - dnsutils
+    state: "{{ apt_install_state | default('latest') }}"
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+
+- name: test dns installation
+  shell: >
+    nslookup mail.example.com
+    | grep 'Address'
+    | awk '{print $2}'
+    | grep -q '192.168.0.8'
+    && (echo 'Configuration test: pass' && exit 0)
+    || (echo 'Configuration test: fail' && exit 1)
+  args:
+    warn: false
+  changed_when: false
+  tags:
+    - skip_ansible_lint

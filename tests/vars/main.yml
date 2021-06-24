@@ -1,0 +1,7 @@
+# vars file
+---
+dnsmasq_dnsmasq_d_files_present:
+  example-com:
+    - address=/mail.example.com/192.168.0.8
+    - address=/www.example.com/192.168.0.9
+dnsmasq_dnsmasq_d_files_absent: {}

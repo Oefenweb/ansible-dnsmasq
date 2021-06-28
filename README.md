@@ -15,6 +15,8 @@ None
 * `dnsmasq_service_state`: [default: `started`]: The state of th service (e.g. `stopped`)
 * `dnsmasq_service_enabled`: [default: `true`]: Whether the service should start on boot
 
+* `dnsmasq_service_resolved_disabled`: [default: `false`]: Whether the service `systemd-resolved` should be disabled
+
 * `dnsmasq_etc_default_domain_suffix`: [optional]: Specifies the domain which hosts read from the DHCP leases file must have to be legal (e.g. `dnsdomainname`)
 * `dnsmasq_etc_default_dnsmasq_opts`: [optional]: Options to pass to the `dnsmasq` daemon (e.g. `--conf-file=/etc/dnsmasq.alt`)
 * `dnsmasq_etc_default_config_dir`: [default: `/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new`]: Searches this drop directory for configuration options (leave empty to comment out)

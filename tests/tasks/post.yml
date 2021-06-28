@@ -11,15 +11,6 @@
 - name: test dns installation
   shell: >
     dig @127.0.0.1 mail.example.com
-  args:
-    warn: false
-  changed_when: false
-  tags:
-    - skip_ansible_lint
-
-- name: test dns installation
-  shell: >
-    dig @127.0.0.1 mail.example.com
     | grep 'ANSWER SECTION' -A 1
     | sed 1d
     | awk '{print $NF}'

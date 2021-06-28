@@ -69,33 +69,14 @@
   tags:
     - configuration
     - dnsmasq
-    - dnsmasq-start-enable-service
+    - dnsmasq-stop-disable-service
 
 - name: start and enable service
   service:
     name: dnsmasq
     state: "{{ dnsmasq_service_state }}"
     enabled: "{{ dnsmasq_service_enabled | bool }}"
-  failed_when: false
   tags:
     - configuration
     - dnsmasq
     - dnsmasq-start-enable-service
-
-- name: debug
-  command: >
-    systemctl status dnsmasq.service
-  args:
-    warn: false
-  changed_when: false
-  tags:
-    - skip_ansible_lint
-
-- name: debug
-  command: >
-    journalctl -xe
-  args:
-    warn: false
-  changed_when: false
-  tags:
-    - skip_ansible_lint

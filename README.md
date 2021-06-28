@@ -1,7 +1,8 @@
 
 ## dnsmasq
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-dnsmasq.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-dnsmasq) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-dnsmasq-blue.svg)](https://galaxy.ansible.com/Oefenweb/dnsmasq/)
+[![CI](https://github.com/Oefenweb/ansible-dnsmasq/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-dnsmasq/actions?query=workflow%3ACI)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-dnsmasq-blue.svg)](https://galaxy.ansible.com/Oefenweb/dnsmasq/)
 
 Set up [Dnsmasq](http://www.thekelleys.org.uk/dnsmasq/doc.html) in Debian-like systems.
 
@@ -13,6 +14,8 @@ None
 
 * `dnsmasq_service_state`: [default: `started`]: The state of th service (e.g. `stopped`)
 * `dnsmasq_service_enabled`: [default: `true`]: Whether the service should start on boot
+
+* `dnsmasq_service_resolved_disabled`: [default: `false`]: Whether the service `systemd-resolved` should be disabled
 
 * `dnsmasq_etc_default_domain_suffix`: [optional]: Specifies the domain which hosts read from the DHCP leases file must have to be legal (e.g. `dnsdomainname`)
 * `dnsmasq_etc_default_dnsmasq_opts`: [optional]: Options to pass to the `dnsmasq` daemon (e.g. `--conf-file=/etc/dnsmasq.alt`)
@@ -26,7 +29,7 @@ None
 * `dnsmasq_dnsmasq_d_files_present`: [default: `{}`]: Declaration of specific configuration files (to add)
 * `dnsmasq_dnsmasq_d_files_present.key`: [required]: The name of the configuration file (e.g. `hosts`)
 * `dnsmasq_dnsmasq_d_files_present.key.{n}`: [default: `[]`]: List of lines of the configuration file
-  
+
 * `dnsmasq_dnsmasq_d_files_absent`: [default: `{}`]: Specific configuration files to remove
 * `dnsmasq_dnsmasq_d_files_absent.key`: [required]: The name of the configuration file (e.g. `hosts`)
 

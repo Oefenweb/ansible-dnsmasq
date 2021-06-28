@@ -1,0 +1,7 @@
+---
+- name: Verify
+  hosts: all
+  become: true
+  tasks:
+    - name: include tasks
+      include: "{{ playbook_dir }}/../../tests/tasks/post.yml"

@@ -60,6 +60,17 @@
     - dnsmasq-configuration
     - dnsmasq-configuration-remove-specific-configuration-files
 
+- name: stop and disable (systemd-resolved) service
+  service:
+    name: systemd-resolved
+    state: stopped
+    enabled: false
+  when: dnsmasq_service_resolved_disabled | bool
+  tags:
+    - configuration
+    - dnsmasq
+    - dnsmasq-stop-disable-service
+
 - name: start and enable service
   service:
     name: dnsmasq

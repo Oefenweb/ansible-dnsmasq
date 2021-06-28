@@ -3,6 +3,8 @@
 dnsmasq_service_state: "{{ service_default_state | default('started') }}"
 dnsmasq_service_enabled: "{{ service_default_enabled | default(true) }}"
 
+dnsmasq_service_resolved_disabled: false
+
 dnsmasq_etc_default_config_dir: '/etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dpkg-new'
 
 # TODO: Clean this up (some day)

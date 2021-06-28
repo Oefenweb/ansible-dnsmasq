@@ -10,7 +10,7 @@
 
 - name: test dns installation
   shell: >
-    nslookup mail.example.com
+    dig @127.0.0.1 mail.example.com
   args:
     warn: false
   changed_when: false
@@ -19,9 +19,10 @@
 
 - name: test dns installation
   shell: >
-    nslookup mail.example.com
-    | grep 'Address'
-    | awk '{print $2}'
+    dig @127.0.0.1 mail.example.com
+    | grep 'ANSWER SECTION' -A 1
+    | sed 1d
+    | awk '{print $NF}'
     | grep -q '192.168.0.8'
     && (echo 'Configuration test: pass' && exit 0)
     || (echo 'Configuration test: fail' && exit 1)

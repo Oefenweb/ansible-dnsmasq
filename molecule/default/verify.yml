@@ -4,4 +4,4 @@
   become: true
   tasks:
     - name: include tasks
-      include: "{{ playbook_dir }}/../../tests/tasks/post.yml"
+      ansible.builtin.include: "{{ playbook_dir }}/../../tests/tasks/post.yml"

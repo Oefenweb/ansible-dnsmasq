@@ -8,7 +8,7 @@
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
 
-- name: test dns installation
+- name: test dns installation  # noqa risky-shell-pipe
   ansible.builtin.shell: >
     dig @127.0.0.1 mail.example.com
     | grep 'ANSWER SECTION' -A 1

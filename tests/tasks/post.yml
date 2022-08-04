@@ -1,7 +1,7 @@
 # post test file
 ---
 - name: install test dependencies
-  apt:
+  ansible.builtin.apt:
     name:
       - dnsutils
     state: "{{ apt_install_state | default('latest') }}"
@@ -9,7 +9,7 @@
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
 
 - name: test dns installation
-  shell: >
+  ansible.builtin.shell: >
     dig @127.0.0.1 mail.example.com
     | grep 'ANSWER SECTION' -A 1
     | sed 1d
@@ -20,5 +20,3 @@
   args:
     warn: false
   changed_when: false
-  tags:
-    - skip_ansible_lint

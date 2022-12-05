@@ -17,6 +17,4 @@
     | grep -q '192.168.0.8'
     && (echo 'Configuration test: pass' && exit 0)
     || (echo 'Configuration test: fail' && exit 1)
-  args:
-    warn: false
   changed_when: false

@@ -1,4 +1,4 @@
-# {{ ansible_managed }}
+{{ ansible_managed | comment }}
 
 {% for line in dnsmasq_etc_default | default([]) %}
 {{ line }}

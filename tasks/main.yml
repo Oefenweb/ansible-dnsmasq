@@ -1,11 +1,9 @@
 # tasks file
 ---
 - name: install dependencies
-  ansible.builtin.apt:
+  ansible.builtin.package:
     name: "{{ dnsmasq_dependencies }}"
-    state: "{{ apt_install_state | default('latest') }}"
-    update_cache: true
-    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+    state: "{{ package_install_state | default('latest') }}"
   tags:
     - configuration
     - dnsmasq

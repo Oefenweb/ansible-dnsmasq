@@ -43,7 +43,7 @@ None
 ---
 - hosts: all
   roles:
-    - dnsmasq
+    - oefenweb.dnsmasq
 ```
 
 #### Example with configuration (force domain to an IP address)
@@ -52,7 +52,7 @@ None
 ---
 - hosts: all
   roles:
-    - dnsmasq
+    - oefenweb.dnsmasq
   vars:
     dnsmasq_dnsmasq_d_files_present:
       example-com:
@@ -73,7 +73,7 @@ None
           nameserver 8.8.4.4
         dest: /etc/resolv.dnsmasq
   roles:
-    - ../../
+    - oefenweb.dnsmasq
   vars:
     dnsmasq_dnsmasq_conf:
       - |

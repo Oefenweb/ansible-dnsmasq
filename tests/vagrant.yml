@@ -11,6 +11,9 @@
           nameserver 8.8.8.8
           nameserver 8.8.4.4
         dest: /etc/resolv.dnsmasq
+        owner: root
+        group: root
+        mode: '0644'
   roles:
     - ../../
   vars:

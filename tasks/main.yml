@@ -18,7 +18,7 @@
     dest: "{{ item.dest }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
     validate: "{{ item.validate | default(omit) }}"
   with_items:
     - src: "{{ dnsmasq_etc_default_file.lstrip('/') }}.j2"
@@ -38,7 +38,7 @@
     dest: "/etc/dnsmasq.d/{{ item.key }}"
     owner: root
     group: root
-    mode: 0644
+    mode: '0644'
     validate: 'dnsmasq --test -C %s'
   with_dict: "{{ dnsmasq_dnsmasq_d_files_present }}"
   notify: restart dnsmasq

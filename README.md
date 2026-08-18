@@ -78,7 +78,7 @@ None
     dnsmasq_dnsmasq_conf:
       - |
         port=53
-        listen-address={{ ansible_lo['ipv4']['address'] }}
+        listen-address={{ ansible_facts['lo']['ipv4']['address'] }}
         bind-interfaces
     dnsmasq_dnsmasq_d_files_present:
       cache:
